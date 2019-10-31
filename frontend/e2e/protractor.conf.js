@@ -30,7 +30,8 @@ exports.config = {
       args: [
         "--headless",
         "--window-size=1920,1080",
-        "--disable-dev-shm-usage"
+        "--disable-dev-shm-usage",
+        "--no-sandbox"
       ]
     }
   },
