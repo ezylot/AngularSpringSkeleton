@@ -27,7 +27,11 @@ exports.config = {
   capabilities: {
     browserName: 'chrome',
     chromeOptions: {
-      args: [ "--headless", "--window-size=1920,1080" ]
+      args: [
+        "--headless",
+        "--window-size=1920,1080",
+        "--disable-dev-shm-usage"
+      ]
     }
   },
   directConnect: true,
