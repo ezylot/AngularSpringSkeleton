@@ -1,16 +1,13 @@
-import { AppPage } from './app.po';
 import { browser, logging } from 'protractor';
 
 describe('workspace-project App', () => {
-  let page: AppPage;
 
   beforeEach(() => {
-    page = new AppPage();
+    return browser.get(browser.baseUrl);
   });
 
   it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('frontend app is running!');
+    expect(browser.getTitle()).toEqual('Frontend');
   });
 
   afterEach(async () => {
