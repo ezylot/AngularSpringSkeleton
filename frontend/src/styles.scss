@@ -6,6 +6,10 @@ html {
   font-family: 'Open Sans', serif;
   font-weight: normal;
   font-style: normal;
+
+  -webkit-font-smoothing: none;
+  font-smoothing: none;
+
   overflow-x: hidden;
   overflow-y: scroll;
 }
