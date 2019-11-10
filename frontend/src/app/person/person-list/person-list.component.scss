@@ -10,14 +10,31 @@ a {
 table {
     width: 100%;
     border-collapse: collapse;
+
+    thead th {
+        text-align: left;
+        border-bottom: 1px solid #d2d2d2;
+        padding-bottom: 4px;
+
+        &:first-of-type {
+            width: 50px;
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    tbody {
+        tr:first-of-type td {
+            padding-top: 15px;
+        }
+
+        td:last-of-type {
+            width: 50px;
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+
 }
 
-thead th {
-    text-align: left;
-    border-bottom: 1px solid #d2d2d2;
-    padding-bottom: 4px;
-}
-
-tbody tr:first-of-type td {
-    padding-top: 15px;
-}

@@ -9,20 +9,23 @@ $frontend-theme: mat-light-theme($frontend-primary, $frontend-accent, $frontend-
 @include angular-material-theme($frontend-theme);
 
 html, body {
-    font-size: 13pt;
-    font-family: 'Open Sans', serif;
-    font-weight: 400;
-    font-style: normal;
     height: 100%;
     margin: 0;
 }
 
-pre {
-    font-family: 'Roboto Mono', serif;
+html, body, * {
+    font-size: 13pt;
+    font-family: 'Open Sans', serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: -0.5px;
     word-spacing: 1px;
-    letter-spacing: 1px;
 }
 
 a .fa {
     color: black;
+}
+
+button {
+    min-width: 100px;
 }
