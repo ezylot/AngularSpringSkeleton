@@ -5,20 +5,34 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {HttpClientModule} from "@angular/common/http";
+import {HomeComponent} from './home/home.component';
+import {NavigationComponent} from './navigation/navigation.component';
+import {HeaderComponent} from './header/header.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PageNotFoundComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        PageNotFoundComponent,
+        HomeComponent,
+        NavigationComponent,
+        HeaderComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatSnackBarModule,
+    ],
+    providers: [
+        {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2000}}
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

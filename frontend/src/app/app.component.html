@@ -1,8 +1,5 @@
-<span>{{ title }} app is running!</span>
-
-<br />
-<a routerLink="/person/list" class="btn btn-info">List Persons</a>
-
-<br />
-
-<router-outlet></router-outlet>
+<app-header></app-header>
+<app-navigation></app-navigation>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

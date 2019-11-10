@@ -1,14 +1,28 @@
-html {
-  font-size: 13pt;
-  font-family: 'Open Sans', serif;
-  font-weight: 400;
-  font-style: normal;
-  overflow-x: hidden;
-  overflow-y: scroll;
+@import '../node_modules/font-awesome/css/font-awesome.css';
+@import '~@angular/material/theming';
+
+@include mat-core();
+$frontend-primary: mat-palette($mat-indigo);
+$frontend-accent: mat-palette($mat-pink, A200, A100, A400);
+$frontend-warn: mat-palette($mat-red);
+$frontend-theme: mat-light-theme($frontend-primary, $frontend-accent, $frontend-warn);
+@include angular-material-theme($frontend-theme);
+
+html, body {
+    font-size: 13pt;
+    font-family: 'Open Sans', serif;
+    font-weight: 400;
+    font-style: normal;
+    height: 100%;
+    margin: 0;
 }
 
 pre {
-  font-family: 'Roboto Mono', serif;
-  word-spacing: 1px;
-  letter-spacing: 1px;
+    font-family: 'Roboto Mono', serif;
+    word-spacing: 1px;
+    letter-spacing: 1px;
+}
+
+a .fa {
+    color: black;
 }

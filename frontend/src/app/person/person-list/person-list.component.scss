@@ -1,0 +1,23 @@
+:host > div {
+    height: 100%;
+    width: 100%;
+}
+
+a {
+    margin-left: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    text-align: left;
+    border-bottom: 1px solid #d2d2d2;
+    padding-bottom: 4px;
+}
+
+tbody tr:first-of-type td {
+    padding-top: 15px;
+}

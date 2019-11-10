@@ -1,0 +1,13 @@
+<form [formGroup]="person" (ngSubmit)="onSubmit()">
+
+    <mat-form-field>
+        <input matInput placeholder="First Name" formControlName="firstName" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Last Name" type="text" formControlName="lastName" required/>
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="!person.valid">Submit</button>
+</form>
+

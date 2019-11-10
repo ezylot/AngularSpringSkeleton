@@ -9,7 +9,7 @@ import kotlin.properties.Delegates
 @Entity
 data class Person(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long? = null,
     val firstName: String,
     val lastName: String
 )
