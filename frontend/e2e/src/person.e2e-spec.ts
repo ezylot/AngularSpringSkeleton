@@ -43,7 +43,7 @@ describe("person regression test", () => {
         await element(by.css("button[type=submit]")).click();
 
         // person list page
-        await browser.wait(protractor.ExpectedConditions.urlContains("list"), 1000);
+        await browser.wait(protractor.ExpectedConditions.urlContains("list"), 10000);
         expect(await browser.imageComparison.checkElement(element(by.tagName("app-person-list")), "person-creation-page-after-submit", { })).toEqual(0);
         expect(await element(by.css("tr td:nth-of-type(1)")).getText()).toEqual("1");
         expect(await element(by.css("tr td:nth-of-type(2)")).getText()).toEqual("Florian");
