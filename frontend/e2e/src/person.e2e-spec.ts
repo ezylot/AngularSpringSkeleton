@@ -1,5 +1,4 @@
 import {browser, by, element, protractor} from "protractor";
-import ProtractorImageComparison from "protractor-image-comparison/build/protractor.image.compare";
 
 describe("person regression test", () => {
 
