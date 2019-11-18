@@ -1,7 +1,9 @@
 @import '../node_modules/font-awesome/css/font-awesome.css';
 @import '~@angular/material/theming';
 
-@include mat-core();
+$custom-typography: mat-typography-config($font-family: '"Open Sans", serif;');
+@include mat-core($custom-typography);
+
 $frontend-primary: mat-palette($mat-indigo);
 $frontend-accent: mat-palette($mat-pink, A200, A100, A400);
 $frontend-warn: mat-palette($mat-red);
@@ -15,7 +17,7 @@ html, body {
 
 html, body, * {
     font-size: 13pt;
-    font-family: 'Open Sans', serif;
+    font-family: 'Open Sans', serif !important;
     font-weight: 400;
     font-style: normal;
     letter-spacing: -0.5px;
