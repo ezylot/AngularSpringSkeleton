@@ -59,7 +59,7 @@ describe("person regression test", () => {
         expect(await element(by.css("tr td:nth-of-type(2)")).getText()).toEqual("Florian");
         expect(await element(by.css("tr td:nth-of-type(3)")).getText()).toEqual("Schöffl");
 
-        await element(by.css("tr td:nth-of-type(4) .fa-trash")).click();
+        await element(by.css("tr td:nth-of-type(4) .ion-md-trash")).click();
         await browser.sleep(50); // wait for snackbar to show
         expect(await browser.imageComparison.checkElement(element(by.tagName("app-person-list")), "person-list-page-after-delete", { })).toBeLessThanOrEqual(0.1);
     });
