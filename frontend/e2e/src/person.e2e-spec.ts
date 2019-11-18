@@ -53,6 +53,8 @@ describe("person regression test", () => {
 
         // person list page
         await browser.wait(protractor.ExpectedConditions.urlContains("list"), 10000);
+        await browser.sleep(50); // wait for snackbar to show
+
         expect(await browser.imageComparison.checkElement(element(by.tagName("app-person-list")), "person-creation-page-after-submit", { })).toBeLessThanOrEqual(0.1);
         expect(await element(by.css("tr td:nth-of-type(2)")).getText()).toEqual("Florian");
         expect(await element(by.css("tr td:nth-of-type(3)")).getText()).toEqual("Schöffl");
