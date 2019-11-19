@@ -3,6 +3,10 @@ form {
     width: 100%;
 }
 
+[mat-raised-button] {
+    min-width: 110px;
+}
+
 mat-form-field {
     display: block;
 }

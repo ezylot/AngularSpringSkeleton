@@ -14,8 +14,8 @@
             <td>{{ person.firstName }}</td>
             <td>{{ person.lastName }}</td>
             <td>
-                <a [routerLink]="['/person/edit', person.id]"><i class="fa fa-edit"></i></a>
-                <a [routerLink]="" (click)="deletePerson(person.id)"><i class="fa fa-trash"></i></a>
+                <a [routerLink]="['/person/edit', person.id]"><i class="icon ion-md-create"></i></a>
+                <a [routerLink]="" (click)="deletePerson(person.id)"><i class="icon ion-md-trash"></i></a>
             </td>
         </tr>
         </tbody>

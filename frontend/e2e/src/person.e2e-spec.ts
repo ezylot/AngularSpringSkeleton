@@ -1,5 +1,4 @@
 import {browser, by, element, protractor} from "protractor";
-import ProtractorImageComparison from "protractor-image-comparison/build/protractor.image.compare";
 
 describe("person regression test", () => {
 
@@ -53,11 +52,14 @@ describe("person regression test", () => {
 
         // person list page
         await browser.wait(protractor.ExpectedConditions.urlContains("list"), 10000);
+        await browser.sleep(50); // wait for snackbar to show
+
         expect(await browser.imageComparison.checkElement(element(by.tagName("app-person-list")), "person-creation-page-after-submit", { })).toBeLessThanOrEqual(0.1);
         expect(await element(by.css("tr td:nth-of-type(2)")).getText()).toEqual("Florian");
         expect(await element(by.css("tr td:nth-of-type(3)")).getText()).toEqual("Schöffl");
 
-        await element(by.css("tr td:nth-of-type(4) .fa-trash")).click();
+        await element(by.css("tr td:nth-of-type(4) .ion-md-trash")).click();
+        await browser.sleep(50); // wait for snackbar to show
         expect(await browser.imageComparison.checkElement(element(by.tagName("app-person-list")), "person-list-page-after-delete", { })).toBeLessThanOrEqual(0.1);
     });
 
