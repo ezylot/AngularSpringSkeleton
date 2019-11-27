@@ -1,5 +1,12 @@
-<app-header></app-header>
-<app-navigation></app-navigation>
-<div class="content">
-  <router-outlet></router-outlet>
-</div>
+<app-header (burgerButtonPressed)="sidenav.toggle()"></app-header>
+
+<mat-sidenav-container [hasBackdrop]="false" >
+    <mat-sidenav #sidenav [mode]="'push'">
+        <app-navigation></app-navigation>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -11,6 +11,8 @@ import {HeaderComponent} from './header/header.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
+import {QuicklinkModule} from "ngx-quicklink";
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 @NgModule({
     declarations: [
@@ -28,6 +30,8 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/materia
         ReactiveFormsModule,
         BrowserAnimationsModule,
         MatSnackBarModule,
+        QuicklinkModule,
+        MatSidenavModule
     ],
     providers: [
         { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 3000 } }
