@@ -1,15 +1,24 @@
-import {Component, HostBinding, OnInit} from '@angular/core';
+import {Component, ElementRef, HostBinding, OnInit, ViewChild} from '@angular/core';
+import {Store} from "@ngrx/store";
+import {AppState} from "./reducers/app.reducers";
+import * as AppActions  from "./reducers/app.actions";
+import {MatSidenav} from "@angular/material/sidenav";
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = 'frontend';
-    navigationVisible: boolean = false;
+    @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
 
-    toggleNavigationVisibility() {
-        this.navigationVisible = !this.navigationVisible;
+    constructor(private readonly store: Store<{ app: AppState }>) {
+    }
+
+    ngOnInit(): void {
+        this.store.select(state => state.app.navigationVisible).subscribe(value => {
+            this.sidenav.opened = value;
+        });
     }
 }

@@ -1,4 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import * as AppActions from "../reducers/app.actions";
+import {AppState} from "../reducers/app.reducers";
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-header',
@@ -6,5 +9,11 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-    @Output() burgerButtonPressed = new EventEmitter();
+
+    constructor(private readonly store: Store<{app: AppState}>) {
+    }
+
+    burgerButtonPressed() {
+        this.store.dispatch(AppActions.toggleNavigation());
+    }
 }

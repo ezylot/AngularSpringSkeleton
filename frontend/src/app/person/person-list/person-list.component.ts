@@ -2,7 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Person} from "../entity/person";
 import {PersonService} from "../service/person.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {map,} from "rxjs/operators";
+import {select, Store} from "@ngrx/store";
+import {PersonState} from "../store/pesrson.reducers";
+import {Observable} from "rxjs";
+import * as PersonActions from "../store/person.actions.js"
 
 @Component({
     selector: 'app-person-list',
@@ -11,22 +14,19 @@ import {map,} from "rxjs/operators";
 })
 export class PersonListComponent implements OnInit {
 
-    persons: Person[];
+    persons: Observable<Person[]>;
 
     constructor(private readonly personService: PersonService,
-                private readonly snackbar: MatSnackBar) {
+                private readonly snackbar: MatSnackBar,
+                private readonly store: Store<{ person: PersonState }>) {
+        this.persons = this.store.select(state => state.person.persons);
     }
 
     ngOnInit() {
-        this.personService.findAll().subscribe(data => {
-            this.persons = data;
-        });
+        this.store.dispatch(PersonActions.loadPersonsRequest());
     }
 
-    deletePerson(id: Number) {
-        this.personService.delete(id).subscribe(() => {
-            this.snackbar.open(`Deleted person with ID ${id}`);
-            this.persons = this.persons.filter(value => value.id != id);
-        });
+    deletePerson(id: number) {
+        this.store.dispatch(PersonActions.deletePersonsRequest({ id }));
     }
 }

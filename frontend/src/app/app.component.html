@@ -1,7 +1,7 @@
-<app-header (burgerButtonPressed)="sidenav.toggle()"></app-header>
+<app-header></app-header>
 
 <mat-sidenav-container [hasBackdrop]="false" >
-    <mat-sidenav #sidenav [mode]="'push'">
+    <mat-sidenav #sidenav [mode]="'side'">
         <app-navigation></app-navigation>
     </mat-sidenav>
     <mat-sidenav-content>

@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {PersonService} from "../service/person.service";
-import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Person} from "../entity/person";
-import {switchMap} from "rxjs/operators";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {PersonState} from "../store/pesrson.reducers";
+import {Store} from "@ngrx/store";
+import * as PersonActions from "../store/person.actions";
 
 @Component({
     selector: 'app-person-edit',
@@ -22,32 +24,38 @@ export class PersonEditComponent implements OnInit {
                 private route: ActivatedRoute,
                 private router: Router,
                 private fb: FormBuilder,
-                private readonly snackbar: MatSnackBar) {
+                private readonly snackbar: MatSnackBar,
+                private readonly store: Store<{ person: PersonState }>) {
     }
 
     ngOnInit() {
+        this.store.select(state => state.person.personToEdit).subscribe(personToEdit => {
+            if(personToEdit == null) return;
+
+            this.person.setValue({
+                id: personToEdit.id,
+                firstName: personToEdit.firstName,
+                lastName: personToEdit.lastName,
+            })
+        });
+
         let id = this.route.snapshot.paramMap.get("id");
         if (id) {
-            this.personService.findById(Number(id)).subscribe(loadedPerson => {
-                this.person.setValue({
-                    id: loadedPerson.id,
-                    firstName: loadedPerson.firstName,
-                    lastName: loadedPerson.lastName,
-                })
-            })
+            this.store.dispatch(PersonActions.getPersonRequest({ id: Number(id) }));
         }
     }
 
     onSubmit() {
-        this.personService.save(new Person(this.person.value))
-            .subscribe(val => {
-                let id = this.route.snapshot.paramMap.get("id");
-                if(id) {
-                    this.snackbar.open(`Updated person with id ${val.id}`)
+        this.store.dispatch(PersonActions.savePersonRequest({
+            person: new Person(this.person.value),
+            done: (person: Person) => {
+                if (person.id) {
+                    this.snackbar.open(`Updated person with id ${person.id}`)
                 } else {
-                    this.snackbar.open(`Created person with id ${val.id}`)
+                    this.snackbar.open(`Created person with id ${person.id}`)
                 }
                 this.router.navigate(['/person/list'])
-            });
+            }
+        }));
     }
 }

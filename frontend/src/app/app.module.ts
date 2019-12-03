@@ -13,6 +13,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/material/snack-bar";
 import {QuicklinkModule} from "ngx-quicklink";
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {StoreModule} from '@ngrx/store';
+import {reducer} from './reducers/app.reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import {EffectsModule} from "@ngrx/effects";
 
 @NgModule({
     declarations: [
@@ -31,7 +36,15 @@ import {MatSidenavModule} from "@angular/material/sidenav";
         BrowserAnimationsModule,
         MatSnackBarModule,
         QuicklinkModule,
-        MatSidenavModule
+        MatSidenavModule,
+        StoreModule.forRoot({ app: reducer }, {
+            runtimeChecks: {
+                strictStateImmutability: true,
+                strictActionImmutability: true,
+            }
+        }),
+        EffectsModule.forRoot([]),
+        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     ],
     providers: [
         { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 3000 } }

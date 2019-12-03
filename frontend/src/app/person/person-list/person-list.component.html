@@ -9,7 +9,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let person of persons">
+        <tr *ngFor="let person of persons | async">
             <td>{{ person.id }}</td>
             <td>{{ person.firstName }}</td>
             <td>{{ person.lastName }}</td>
